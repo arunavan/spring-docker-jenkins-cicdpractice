@@ -11,13 +11,13 @@ pipeline {
        
 		
         
-     //   stage('SonarQube'){
-	//		steps{
-	//			bat label: '', script: '''mvn sonar:sonar \
-	//			-Dsonar.host.url=http://localhost:9000 \
-	//			-Dsonar.login=squ_75d790bab41cb01cf7594d6e78b0868cfb8d065b'''
-	//		}
-   	//	}
+        stage('SonarQube'){
+			steps{
+				bat label: '', script: '''mvn sonar:sonar \
+				-Dsonar.host.url=http://localhost:9000 \
+				-Dsonar.login=squ_85162e2500772e6d7b2610e8d432c21134880252'''
+			}
+   		}
         
      
 
@@ -28,25 +28,25 @@ pipeline {
            }
         }
 
-     //   stage('Docker Login'){
+        stage('Docker Login'){
             
-       //     steps {
-          //       withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-          //          sh "docker login -u arunajava567 -p ${varthr708}"
-           //     }
-         //   }                
+            steps {
+                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+                   bat "docker login -u aruna708 -p ${varthr708*}"
+                }
+            }                
         
 
         stage('Docker Push'){
             steps {
-                bat 'docker push arunajava567/spring-docker-jenkins-app1:latest'
+                bat 'docker push aruna708/spring-docker-jenkins-app1:latest'
             }
         }
         
         stage('Docker deploy'){
           steps {
                
-              bat 'docker run -itd -p  8086:8086 arunajava567/spring-docker-jenkins-app1:latest'
+              bat 'docker run -itd -p  8086:8086 aruna708/spring-docker-jenkins-app1:latest'
             }
         }
 
