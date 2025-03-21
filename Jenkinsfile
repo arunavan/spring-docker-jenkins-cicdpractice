@@ -28,20 +28,20 @@ pipeline {
            }
         }
 
-        stage('Docker Login'){
+    //    stage('Docker Login'){
             
-            steps {
-                 withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
-                   bat "docker login -u aruna708 -p ${varthr708*}"
-                }
-            }                
+    //        steps {
+    //             withCredentials([string(credentialsId: 'DockerId', variable: 'Dockerpwd')]) {
+    //               bat "docker login -u aruna708 -p ${varthr708*}"
+    //            }
+    //        }                
         
 
-        stage('Docker Push'){
-            steps {
-                bat 'docker push aruna708/spring-docker-jenkins-app1:latest'
-            }
-        }
+  //      stage('Docker Push'){
+   //         steps {
+   //             bat 'docker push aruna708/spring-docker-jenkins-app1:latest'
+   //         }
+  //     }
         
         stage('Docker deploy'){
           steps {
